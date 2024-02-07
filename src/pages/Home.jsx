@@ -74,17 +74,6 @@ const Home = () => {
       appliedFilter.push({ key: "department", value: selectedDepartment });
     }
 
-    // Apply location filter
-    // if (selectedLocation) {
-    //   filteredData = Object.keys(filteredData).reduce((acc, department) => {
-    //     acc[department] = filteredData[department].filter(
-    //       (job) => job.location?.title === selectedLocation
-    //     );
-    //     appliedFilter.push({ key: "location", value: selectedLocation });
-    //     return acc;
-    //   }, {});
-    // }
-
     if (selectedLocation) {
       filteredData = {};
       Object.keys(jobsByDepartment).forEach((department) => {
@@ -100,17 +89,6 @@ const Home = () => {
       appliedFilter.push({ key: "location", value: selectedLocation });
     }
 
-    // Apply function filter
-    // if (selectedFunction) {
-    //   filteredData = Object.keys(filteredData).reduce((acc, department) => {
-    //     acc[department] = filteredData[department].filter(
-    //       (job) => job.jobFunction?.title === selectedFunction
-    //     );
-    //     appliedFilter.push({ key: "function", value: selectedFunction });
-    //     return acc;
-    //   }, {});
-    // }
-    // Apply function filter
     if (selectedFunction) {
       filteredData = {};
       Object.keys(jobsByDepartment).forEach((department) => {
@@ -217,6 +195,7 @@ const Home = () => {
               flexWrap: "nowrap",
               "@media (max-width: 425px)": {
                 flexWrap: "wrap",
+                display: "block",
               },
             }}
           >
@@ -226,6 +205,12 @@ const Home = () => {
               placeholder="Department"
               value={selectedDepartment}
               onChange={onDeptChange}
+              sx={{
+                "@media (max-width: 425px)": {
+                  maxWidth: "100%",
+                  marginBottom: "10px",
+                },
+              }}
             ></Select>
             <Select
               data={locationOptions}
@@ -233,6 +218,12 @@ const Home = () => {
               placeholder="Location"
               value={selectedLocation}
               onChange={onLocationChange}
+              sx={{
+                "@media (max-width: 425px)": {
+                  maxWidth: "100%",
+                  marginBottom: "10px",
+                },
+              }}
             ></Select>
             <Select
               data={functionOptions}
@@ -240,6 +231,12 @@ const Home = () => {
               placeholder="Function"
               value={selectedFunction}
               onChange={onFunctionChange}
+              sx={{
+                "@media (max-width: 425px)": {
+                  maxWidth: "100%",
+                  marginBottom: "10px",
+                },
+              }}
             ></Select>
           </Group>
         </Card>
