@@ -17,7 +17,9 @@ import Page from "../components/Page";
 import { IconBuilding, IconMapPinFilled } from "@tabler/icons-react";
 import { useGetJobDetailsQuery, useJobOpeningsQuery } from "../redux/api";
 import { useParams } from "react-router-dom";
+import { useMediaQuery } from "@mantine/hooks";
 const Details = () => {
+  const matches = useMediaQuery("(min-width: 26.00em)");
   const { id } = useParams();
   const { data, isLoading } = useGetJobDetailsQuery(id);
   const { data: otherJobs, isLoading: isOtherJobsLoading } =
@@ -69,10 +71,10 @@ const Details = () => {
       </Card>
 
       <Grid>
-        <Grid.Col span={8}>
+        <Grid.Col span={matches ? 12 : 8}>
           <div dangerouslySetInnerHTML={{ __html: sanitizedHTML }}></div>
         </Grid.Col>
-        <Grid.Col span={4}>
+        <Grid.Col span={matches ? 12 : 8}>
           <Card sx={{ backgroundColor: "#f4f4f4" }} p={40}>
             <Title order={4} underline mb={20}>
               Other Openings
